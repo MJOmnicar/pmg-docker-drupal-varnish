@@ -71,13 +71,20 @@ sub vcl_recv {
 
     # Pass through any administrative or AJAX-related paths.
     if (req.url ~ "^/status\.php$" ||
-        req.url ~ "^/update\.php$" ||
-        req.url ~ "^/admin$" ||
+        req.url ~ "^/update\.php" ||
+        req.url ~ "^/install\.php" ||
+        req.url ~ "^/apc\.php$" ||
+        req.url ~ "^/admin" ||
         req.url ~ "^/admin/.*$" ||
+        req.url ~ "^/user" ||
+        req.url ~ "^/user/.*$" ||
+        req.url ~ "^/users/.*$" ||
+        req.url ~ "^/info/.*$" ||
         req.url ~ "^/flag/.*$" ||
         req.url ~ "^.*/ajax/.*$" ||
-        req.url ~ "^.*/ahah/.*$") {
-           return (pass);
+        req.url ~ "^.*/ahah/.*$" ||
+        req.url ~ "^/system/files/.*$") {
+            return (pass);
     }
 
     # Implementing websocket support (https://www.varnish-cache.org/docs/4.0/users-guide/vcl-example-websockets.html)
