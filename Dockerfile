@@ -30,13 +30,13 @@ RUN \
   mkdir -p /usr/local/src && \
   cd /usr/local/src && \
   curl -sfLO http://varnish-cache.org/_downloads/varnish-$VARNISH_VERSION.tgz && \
-  echo "${VARNISH_SHA256SUM} varnish-$VARNISH_VERSION.tar.gz" | sha256sum -c - && \
+  echo "${VARNISH_SHA256SUM} varnish-$VARNISH_VERSION.tgz" | sha256sum -c - && \
   tar -xzf varnish-$VARNISH_VERSION.tgz && \
   cd varnish-$VARNISH_VERSION && \
   ./autogen.sh && \
   ./configure && \
   make install && \
-  rm ../varnish-$VARNISH_VERSION.tar.gz
+  rm ../varnish-$VARNISH_VERSION.tgz
 
 RUN \
   git clone https://github.com/varnish/varnish-modules.git && \
